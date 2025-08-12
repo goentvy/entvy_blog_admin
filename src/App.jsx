@@ -1,8 +1,9 @@
 import './App.css'
+import Login from './components/pages/Login'
 import BlogPosts from './components/pages/BlogPosts'
 import Menu from './components/layout/Menu'
-import Header from './components/layout/Header'
 import Post from './components/pages/Post'
+import ReadPost from './components/pages/ReadPost'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -11,10 +12,11 @@ function App() {
     <>
       <BrowserRouter>
         <Menu />
-        <Header />
         <Routes>
-          <Route path="/" element={<BlogPosts />} />
-          <Route path="/post" element={<Post />} />
+          <Route path="/entvy_blog_admin/" element={<BlogPosts />} />
+          <Route path="/entvy_blog_admin/login" element={<Login />} />
+          <Route path="/entvy_blog_admin/post" element={<Post />} />
+          <Route path="/entvy_blog_admin/read" element={<ReadPost />} />
         </Routes>
       </BrowserRouter>
       

@@ -5,7 +5,7 @@ export async function signInWithGithub() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-        redirectTo: "http://localhost:5173/entvy_blog_vite/admin/page",
+        redirectTo: "http://localhost:5173/entvy_blog_admin/",
         },
     });
     if(error) {
@@ -39,8 +39,13 @@ export async function signOut() {
 }
 
 //  supabase DB Get
-export async function getData(setData, dbTable) {
-    const { data, error } = await supabase.from(dbTable).select();
+export async function getData(setData, dbTable, columnName, value) {
+    let query = supabase.from(dbTable).select();
+    if(columnName && value) {
+        query = query.eq(columnName, value);
+    }
+    const { data, error } = await query;
+
     if(error) {
         console.error('SELECT Error', error);
     } else {
@@ -59,6 +64,16 @@ export async function InsertSubmit(insertData, dbTable) {
         console.log('Insert Success' , data);
     }
 }
+// supabase DB Modify(Update)
+export async function ModifyPost(updateData, dbTable) {
+    const { data, error } = await supabase.from(dbTable).update(updateData).eq('id', updateData.id);
+    if(error) {
+        console.error('Update Error', error, data);
+    } else {
+        console.log('Update Success' , data);
+    }
+}
+
 
 //  supabase DB Delete
 export async function deletePost(id, dbTable) {

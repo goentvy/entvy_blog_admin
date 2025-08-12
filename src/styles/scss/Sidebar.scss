@@ -2,7 +2,7 @@
 $bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
 @import "bootstrap-icons/font/bootstrap-icons";
 
-.menu_wrap {
+.sidebar_wrap {
     position: absolute;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@ $bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
     min-height: 100vh;
 
     .flex-column {
-        > .menu_logo {
+        > .sidebar_logo {
             padding: 20px;
 
             > img {
