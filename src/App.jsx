@@ -1,7 +1,7 @@
 import './App.css'
 import Login from './components/pages/Login'
 import BlogPosts from './components/pages/BlogPosts'
-import Menu from './components/layout/Menu'
+import Sidebar from './components/layout/Sidebar'
 import Post from './components/pages/Post'
 import ReadPost from './components/pages/ReadPost'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Menu />
+        <Sidebar />
         <Routes>
           <Route path="/entvy_blog_admin/" element={<BlogPosts />} />
           <Route path="/entvy_blog_admin/login" element={<Login />} />
@@ -19,8 +19,6 @@ function App() {
           <Route path="/entvy_blog_admin/read" element={<ReadPost />} />
         </Routes>
       </BrowserRouter>
-      
-      
     </>
   )
 }
