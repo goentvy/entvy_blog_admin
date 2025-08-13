@@ -5,7 +5,7 @@ export async function signInWithGithub() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-            redirectTo: "https://goentvy.github.io/entvy_blog_admin/posts",
+            redirectTo: "https://goentvy.github.io/entvy_blog_admin/",
         },
     });
     if(error) {
@@ -19,7 +19,7 @@ export async function signInWithGithub() {
 export async function checkLogin() {
     const authInfo = await supabase.auth.getSession();
     const session = authInfo.data.session;
-    
+
     if(session) {
         return session;
     } else {
