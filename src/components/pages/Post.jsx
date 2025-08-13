@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import MDEditor from '@uiw/react-md-editor'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import '../../styles/scss/Post.scss'
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom'
 import { InsertSubmit, ModifyPost } from '../../store/hook'
 
 function Post() {
@@ -25,7 +25,7 @@ function Post() {
         if(location.state) {
             modifyData();
         } else {
-            console.log(location.state);
+            console.log(`${location.state} location state null`);
         }
     }, [])
 
@@ -35,7 +35,7 @@ function Post() {
             return console.log('category or title or content text null');
         }
         await InsertSubmit({category, title, content}, 'post');
-        navigate('/entvy_blog_admin/');
+        navigate('/entvy_blog_admin/posts');
     }
     async function modify(e) {
         e.preventDefault();
@@ -43,7 +43,7 @@ function Post() {
             return console.log('category or title or content text null');
         }
         await ModifyPost({category, title, content, id}, 'post');
-        navigate('/entvy_blog_admin/');
+        navigate('/entvy_blog_admin/posts');
     }
 
     return (

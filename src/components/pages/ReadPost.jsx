@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-// import { getData } from '../../store/hook'
 import { useLocation } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
+import '../../styles/scss/ReadPost.scss'
 
 function ReadPost() {
     const location = useLocation();

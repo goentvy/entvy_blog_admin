@@ -1,12 +1,8 @@
 
-$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
-@import "bootstrap-icons/font/bootstrap-icons";
 
 .blogPosts_wrap {
     min-height: 100vh;
-    margin: 60px 0 0 200px;
-    padding: 2rem;
-    width: 960px;
+    padding: 10px;
 
     > .posts_title {
         display: flex;

@@ -2,9 +2,7 @@
 
 .post_wrap {
     min-height: 100vh;
-    margin: 60px 0 0 200px;
-    padding: 2rem;
-    width: 960px;
+    padding: 20px;
     
     > select {
         margin-bottom: 20px;
@@ -12,6 +10,7 @@
 }
 .post_btn {
     margin: 20px 0;
+    text-align: center;
 
     > button:nth-child(2) {
         margin: 0 15px;

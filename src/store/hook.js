@@ -5,7 +5,7 @@ export async function signInWithGithub() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-        redirectTo: "http://localhost:5173/entvy_blog_admin/",
+            redirectTo: "https://goentvy.github.io/entvy_blog_admin/posts",
         },
     });
     if(error) {
@@ -19,12 +19,11 @@ export async function signInWithGithub() {
 export async function checkLogin() {
     const authInfo = await supabase.auth.getSession();
     const session = authInfo.data.session;
-    if(session === null) {
-        document.getElementById('Login').style.display = "block";
-        document.getElementById('Logout').style.display = "none";
+    
+    if(session) {
+        return session;
     } else {
-        document.getElementById('Login').style.display = "none";
-        document.getElementById('Logout').style.display = "block";
+        console.log('session null');
     }
 }
 
