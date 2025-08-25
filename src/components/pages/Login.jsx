@@ -13,7 +13,7 @@ function Login() {
     const [ pwd, setPwd ] = useState('');
     const [ error, setError ] = useState('');
 
-    const from = location.state?.from?.pathname || '/entvy_blog_admin/';
+    const from = location.state?.from?.pathname || '/';
     console.log(location);
 
     function handleLogin(e) {

@@ -5,7 +5,7 @@ export async function signInWithGithub() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-            redirectTo: "https://goentvy.github.io/entvy_blog_admin/",
+            redirectTo: "http://localhost:5173/entvy_blog_admin/",
         },
     });
     if(error) {
@@ -31,7 +31,7 @@ export async function checkLogin() {
 export async function signOut() {
     const { error } = await supabase.auth.signOut();
     if(error) {
-        console.error('LogOut Error', error);
+        console.error('LogOut Error', error.message);
     } else {
         checkLogin();
     }

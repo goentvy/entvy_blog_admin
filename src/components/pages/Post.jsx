@@ -35,7 +35,7 @@ function Post() {
             return console.log('category or title or content text null');
         }
         await InsertSubmit({category, title, content}, 'post');
-        navigate('/entvy_blog_admin/posts');
+        navigate('/posts');
     }
     async function modify(e) {
         e.preventDefault();
@@ -43,7 +43,7 @@ function Post() {
             return console.log('category or title or content text null');
         }
         await ModifyPost({category, title, content, id}, 'post');
-        navigate('/entvy_blog_admin/posts');
+        navigate('/posts');
     }
 
     return (

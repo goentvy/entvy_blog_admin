@@ -2,52 +2,52 @@ import './App.css'
 import Login from './components/pages/Login'
 import Dashboard from './components/pages/Dashboard'
 import BlogPosts from './components/pages/BlogPosts'
-import Sidebar from './components/layout/Sidebar'
-import Header from './components/layout/Header'
+import RootLayout from './pages/layout'
 import Post from './components/pages/Post'
 import ReadPost from './components/pages/ReadPost'
 import AuthProvider from './components/auth/AuthProvider'
 import ProtectedRoute from './components/auth/ProtectedRoute'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router'
+import Main from './pages'
 
 function App() {
-
-  return (
-    <>
-      <BrowserRouter>
-        <AuthProvider>
-          <Sidebar />
-          <div className="ml-64">
-            <Header />
-            <Routes>
-              <Route path="/entvy_blog_admin/login" element={<Login />} />
-              <Route path="/entvy_blog_admin/dashboard" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-                } />
-              <Route path="/entvy_blog_admin/posts" element={
-                <ProtectedRoute>
-                  <BlogPosts />
-                </ProtectedRoute>
-                } />
-              <Route path="/entvy_blog_admin/post" element={
-                <ProtectedRoute>
-                  <Post />
-                </ProtectedRoute>
-                } />
-              <Route path="/entvy_blog_admin/read" element={
-                <ProtectedRoute>
-                  <ReadPost />
-                </ProtectedRoute>
-                } />
-              <Route path="/entvy_blog_admin/" element={<Navigate to="/entvy_blog_admin/dashboard" replace />} />
-            </Routes>
-          </div>
-        </AuthProvider>
-      </BrowserRouter>
-    </>
-  )
+    return (
+        <>
+            <HashRouter>
+                <AuthProvider>
+                    <Routes>
+                        <Route element={<RootLayout />}>
+                            <Route index element={<Main />}/>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/dashboard" element={
+                                <ProtectedRoute>
+                                    <Dashboard />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/posts" element={
+                                <ProtectedRoute>
+                                    <BlogPosts />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/post" element={
+                                <ProtectedRoute>
+                                    <Post />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/read" element={
+                                <ProtectedRoute>
+                                    <ReadPost />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                        </Route>
+                            <Route path="*" element={<div>404 Not Found</div>} /> {/* 모든 불일치 경로 처리 */}
+                    </Routes>
+                </AuthProvider>
+            </HashRouter>
+        </>
+    )
 }
 
 export default App
