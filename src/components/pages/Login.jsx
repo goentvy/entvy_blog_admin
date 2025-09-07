@@ -10,6 +10,12 @@ function Login() {
     const [ pwd, setPwd ] = useState('');
     const [ error, setError ] = useState('');
 
+<<<<<<< HEAD
+=======
+    const from = location.state?.from?.pathname || '/';
+    console.log(location);
+
+>>>>>>> 54d8e0200a4247f7171c648f3ecaa9c319a38fac
     function handleLogin(e) {
         e.preventDefault();
         setError('');

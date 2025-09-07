@@ -31,7 +31,7 @@ export async function checkLogin() {
 export async function signOut() {
     const { error } = await supabase.auth.signOut();
     if(error) {
-        console.error('LogOut Error', error);
+        console.error('LogOut Error', error.message);
     } else {
         checkLogin();
     }

@@ -10,7 +10,7 @@ function Header() {
     const handleLogout = () => {
         signOut();
         logout();
-        navigate('/entvy_blog_admin/login');
+        navigate('/login');
     }
     return (
         <header className="bg-white shadow-sm border-b border-gray-200">

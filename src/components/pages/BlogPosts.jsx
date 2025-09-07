@@ -14,17 +14,17 @@ function BlogPosts() {
     }, [])
 
     function modifyPost(post) {
-        navigate('/entvy_blog_admin/post', { state: { postData: post }});
+        navigate('/post', { state: { postData: post }});
     }
     function readPost(post) {
-        navigate('/entvy_blog_admin/read', { state: {postData: post}});
+        navigate('/read', { state: {postData: post}});
     }
 
     return (
         <div className="blogPosts_wrap">
             <div className="posts_title">
                 <span>Blog Posts</span>
-                <Button href="/entvy_blog_admin/post"><i className="bi bi-sticky"></i>글쓰기</Button>
+                <Button href="/entvy_blog_admin/#post"><i className="bi bi-sticky"></i>글쓰기</Button>
             </div>
             <Table striped bordered hover>
                 <thead>
