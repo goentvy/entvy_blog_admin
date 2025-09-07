@@ -1,20 +1,14 @@
 import '../../styles/scss/Login.scss'
 import { useState } from 'react'
 import { useAuth } from '../../store/auth';
-import { useNavigate, useLocation } from 'react-router-dom'
 import { signInWithGithub } from '../../store/hook';
 
 
 function Login() {
-    const navigate = useNavigate();
-    const location = useLocation();
     const { login } = useAuth();
     const [ id, setId ] = useState('');
     const [ pwd, setPwd ] = useState('');
     const [ error, setError ] = useState('');
-
-    const from = location.state?.from?.pathname || '/entvy_blog_admin/';
-    console.log(location);
 
     function handleLogin(e) {
         e.preventDefault();
@@ -22,8 +16,6 @@ function Login() {
 
         if(login(id, pwd)) {
             signInWithGithub();
-            // navigate(from, { replace: true});
-            console.log(from);
         } else {
             setError('아이디 또는 비밀번호가 올바르지 않습니다.');
         }

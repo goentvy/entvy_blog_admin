@@ -3,35 +3,38 @@ import MDEditor from '@uiw/react-md-editor'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import '../../styles/scss/Post.scss'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { InsertSubmit, ModifyPost } from '../../store/hook'
+import { checkLogin, InsertSubmit, ModifyPost } from '../../store/hook'
 
 function Post() {
     const navigate = useNavigate();
     const location = useLocation();
+    const [ id, setPostid ] = useState(null);
     const [ category, setCategory ] = useState("html");
+    const [ tags, setTags ] = useState([]);
     const [ title, setTitle ] = useState("");
     const [ content, setContent ] = useState("");
-    const [ id, setPostid ] = useState(null);
 
     function modifyData() {
         const {postData} = location.state;
+        setPostid(postData.id);
         setCategory(postData.category);
+        setTags(postData.tags);
         setTitle(postData.title);
         setContent(postData.content);
-        setPostid(postData.id);
     }
 
     useEffect(() => {
+        checkLogin();
         if(location.state) {
             modifyData();
         } else {
             console.log(`${location.state} location state null`);
         }
-    }, [])
+    }, [location.state])
 
     async function postSubmit(e) {
         e.preventDefault();
-        if(category === '' || title === '' || content === '') {
+        if(!category || !title || !content || tags.length === 0) {
             return console.log('category or title or content text null');
         }
         await InsertSubmit({category, title, content}, 'post');
@@ -57,7 +60,7 @@ function Post() {
             </Form.Select>
             <InputGroup className="mb-3">
                 <InputGroup.Text id="inputGroup-sizing-default">
-                Title
+                    Title
                 </InputGroup.Text>
                 <Form.Control
                     aria-label="Default"
